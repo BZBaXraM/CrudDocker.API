@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerCrud.Api", "DockerCrud.Api\DockerCrud.Api.csproj", "{DD75B7F8-1591-4AFF-A4C2-68A4EA63F9EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD75B7F8-1591-4AFF-A4C2-68A4EA63F9EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD75B7F8-1591-4AFF-A4C2-68A4EA63F9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD75B7F8-1591-4AFF-A4C2-68A4EA63F9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD75B7F8-1591-4AFF-A4C2-68A4EA63F9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

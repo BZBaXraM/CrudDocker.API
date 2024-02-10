@@ -1,0 +1,45 @@
+version: '3.4'
+
+networks:
+  dev-network:
+    driver: bridge
+
+services:
+  api:
+    image: docker-crud-app
+    build:
+      context: .
+      dockerfile: DockerCrud.Api/Dockerfile
+    ports:
+      - "5040:5040"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=psql;Database=CmsDB;Username=postgres;Password=toor
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://localhost:5040
+    volumes:
+      - ./DockerCrud.Api:/app
+      - /app/obj
+      - /app/bin
+    networks:
+      - dev-network
+    depends_on:
+      - psql
+  psql:
+    image: postgres:latest
+    container_name: "psql"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: CrudDB
+    restart:
+      always
+    volumes:
+      - ./psql-data:/var/lib/postgresql/data
+    networks:
+      - dev-network
+
+
+volumes:
+  psql-data:
