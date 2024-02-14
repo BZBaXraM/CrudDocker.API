@@ -1,4 +1,5 @@
 using DockerCrud.Api.Data;
+using DockerCrud.Api.DTOs;
 using DockerCrud.Api.Models;
 using DockerCrud.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -25,13 +26,26 @@ public class UserController(CrudContext context) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddUserAsync(User user)
     {
-        return Ok(await _service.AddUserAsync(user));
+        var u = new AddUserRequestDto()
+        {
+            Login = user.Login,
+            Name = user.Name,
+            Lastname = user.Lastname
+        };
+        return Ok(await _service.AddUserAsync(u));
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateUserAsync(User user)
+    public async Task<ActionResult<UserDto>> UpdateUserAsync([FromBody] AddUserRequestDto user)
     {
-        return Ok(await _service.UpdateUserAsync(user));
+        var u = new UpdateUserRequestDto
+        {
+            Login = user.Login,
+            Name = user.Name,
+            Lastname = user.Lastname
+        };
+
+        return Ok(await _service.UpdateUserAsync(u));
     }
 
     [HttpDelete("{id:guid}")]

@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<CrudContext>(options => options.UseNpgsql(
-    builder.Configuration.GetConnectionString("DefaultConnection")));
+    builder.Configuration.GetConnectionString("Local")));
 builder.Services.AddScoped<IAsyncCrudService, CrudService>();
 
 var app = builder.Build();
